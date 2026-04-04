@@ -2,7 +2,6 @@ package API;
 
 import Utils.TestContext;
 import io.restassured.response.Response;
-import java.util.function.Consumer;
 
 public class ApiMethods {
     TestContext testContext= TestContext.getInstance();
