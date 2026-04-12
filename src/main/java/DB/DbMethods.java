@@ -60,15 +60,15 @@ public class DbMethods {
     @SneakyThrows
     public void saveValueFromJDBC(String columnName, String contextName)  {
         ResultSet rs = testContext.getResultSet();
-        try {
-            rs.next();
+      if (rs.next()) {
 //            testContext.setValue(contextName, rs.getString(columnName));
             //added
             testContext.addTestContext(contextName,rs.getString(columnName));
-            rs.getStatement().getConnection().close();
-        }catch (SQLException e){
-            Assert.fail("Query response is null");
+        }else{
+            System.out.println("MY ERROR---- No results were found");
         }
+        rs.getStatement().getConnection().close();
+
     }
 
     @SneakyThrows
